@@ -44,9 +44,6 @@ passport.use(new HerokuStrategy({
         callbackURL: "http://127.0.0.1:3000/auth/heroku/callback"
     },
     function(accessToken, refreshToken, profile, done) {
-        User.findOrCreate({ githubId: profile.id }, function(err, user) {
-            return done(err, user);
-        });
     }
 ));
 
@@ -80,27 +77,6 @@ app.get('/error', function(req, res) {
 app.get('/', function(req, res) {
     res.sendfile('./views/auth.html');
 });
-
-passport.use(new GitHubStrategy({
-        clientID: GITHUB_CLIENT_ID,
-        clientSecret: GITHUB_CLIENT_SECRET,
-        callbackURL: "http://localhost:3000/auth/github/callback"
-    },
-    function(accessToken, refreshToken, profile, done) {
-        process.nextTick(function() {
-            console.log(profile);
-            return done(null, profile);
-        });
-    }
-));
-
-app.get('/auth/github', passport.authenticate('github'));
-
-app.get('/auth/github/callback',
-    passport.authenticate('github', {
-        successRedirect: '/success',
-        failureRedirect: '/error'
-    }));
 
 http.createServer(app).listen(app.get('port'), function() {
     console.log('Express server listening on port ' + app.get('port'));
