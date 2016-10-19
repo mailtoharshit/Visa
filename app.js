@@ -8,7 +8,6 @@ var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
 var passport = require('passport');
-var GitHubStrategy = require('passport-github').Strategy;
 var HerokuStrategy = require('passport-heroku').Strategy;
 
 
@@ -16,9 +15,6 @@ var HerokuStrategy = require('passport-heroku').Strategy;
 var HEROKU_CLIENT_ID = "82b2d916-79f2-414e-807d-5dd9ea581577";
 var HEROKU_CLIENT_SECRET = "81751020-3e93-4823-bf1a-eae08be6ee14";
 
-//GITHUB CREDENTIALS
-var GITHUB_CLIENT_ID = "e3519e7ab3d1b8c8de06";
-var GITHUB_CLIENT_SECRET = "dfb27c31d1752c7c0b75ed50bfcec8b37919d3c8";
 
 var app = express();
 
