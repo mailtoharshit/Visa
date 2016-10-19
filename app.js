@@ -43,8 +43,7 @@ passport.use(new HerokuStrategy({
         clientSecret: HEROKU_CLIENT_SECRET,
         callbackURL: "http://127.0.0.1:3000/auth/heroku/callback"
     },
-    function(accessToken, refreshToken, profile, done) {
-    }
+    function(accessToken, refreshToken, profile, done) {}
 ));
 
 //authenticate to heroku
